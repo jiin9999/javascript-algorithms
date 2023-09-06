@@ -1,16 +1,15 @@
-    // result 값을 만든다. (메모리 상 가장 큰 값)
-    // 아래 과정을 n번 만큼 반복한다.
-    // 1. wire를 하나 없애고 분할된 2개의 셋을 비교
-    // 1.1 셋은 어떻게 셀까
-    // 1.2 하나의 선을 뺐을 때, 선에 연결된 각각의 노드에 붙어 있는 노드가 몇개인지 세면된다!
-    // (노드 갯수 세는 로직 고민) (dfs 쓰면 될듯)
-    // 2. 둘 중 하나만 세고, n-노드의 갯수 하면 될듯?
-    // 3. result와 절대값 중 더 작은 값을 result에 넣는다.
+// result 값을 만든다.
+// 아래 과정을 n번 만큼 반복한다.
+// 1. wire를 하나 없애고 분할된 2개의 셋을 비교
+// 1.1 셋은 어떻게 셀까
+// 1.2 하나의 선을 뺐을 때, 선에 연결된 각각의 노드에 붙어 있는 노드가 몇개인지 세면된다!
+// (노드 갯수 세는 로직 고민) (dfs 쓰면 될듯)
+// 2. 둘 중 하나만 세고, n-노드의 갯수 하면 될듯?
+// 3. result와 절대값 중 더 작은 값을 result에 넣는다.
 
 function solution(n, wires) {
     let result = [];
 
-    
     for(let i = 0; i < wires.length; i++) {
         const newArray = [...wires];
         const deleteWire = newArray.splice(i, 1);
@@ -46,7 +45,6 @@ function solution(n, wires) {
         result.push(visited.size);
     }
     result = result.map((x) => {return Math.abs(n - 2 * x)});
-    console.log(result);
     
     return Math.min(...result);
 }
