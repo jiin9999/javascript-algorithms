@@ -1,1 +1,1 @@
-SELECT factory_id, factory_name, address FROM FOOD_FACTORY  where address Like ("%강원도%") order by factory_id ;
+SELECT FACTORY_ID, FACTORY_NAME, ADDRESS FROM FOOD_FACTORY WHERE ADDRESS LIKE ("%강원도%") ORDER BY FACTORY_ID;
