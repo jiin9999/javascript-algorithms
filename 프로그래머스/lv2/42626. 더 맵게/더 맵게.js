@@ -4,18 +4,12 @@ class MinHeap {
     this.heapify();
   }
 
-  // 새로운 요소를 힙에 삽입하는 메서드
   insert(value) {
     this.heap.push(value);
     this.bubbleUp(this.heap.length - 1);
   }
 
-  // 힙에서 최솟값을 삭제하고 반환하는 메서드
-  deleteMin() {
-    if (this.isEmpty()) {
-      return undefined;
-    }
-
+  delete() {
     if (this.heap.length === 1) {
       return this.heap.pop();
     }
@@ -33,25 +27,22 @@ class MinHeap {
     }
   }
 
-  // 힙이 비어있는지 확인하는 메서드
   isEmpty() {
     return this.heap.length === 0;
   }
 
-  // 요소를 올바른 위치로 이동시키는 메서드 (부모와 비교)
   bubbleUp(index) {
     while (index > 0) {
       const parentIndex = Math.floor((index - 1) / 2);
       if (this.heap[index] >= this.heap[parentIndex]) {
         break;
       }
-      // 부모와 자식 노드를 교환
+        
       [this.heap[index], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[index]];
       index = parentIndex;
     }
   }
 
-  // 요소를 올바른 위치로 이동시키는 메서드 (자식과 비교)
   sinkDown(index) {
     const leftChildIndex = 2 * index + 1;
     const rightChildIndex = 2 * index + 2;
@@ -66,7 +57,6 @@ class MinHeap {
     }
 
     if (smallest !== index) {
-      // 자식과 부모 노드를 교환
       [this.heap[index], this.heap[smallest]] = [this.heap[smallest], this.heap[index]];
       this.sinkDown(smallest);
     }
@@ -81,8 +71,8 @@ function solution(scoville, K) {
     if (heap.heap.length === 1) {
       return -1;
     }
-    const min1 = heap.deleteMin();
-    const min2 = heap.deleteMin();
+    const min1 = heap.delete();
+    const min2 = heap.delete();
     const newScoville = min1 + min2 * 2;
     heap.insert(newScoville);
     answer += 1;
